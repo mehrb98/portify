@@ -1,0 +1,13 @@
+{
+  "Python": "@/svg/python.svg",
+  "Tailwind CSS": "@/svg/tailwind.svg",
+  "React": "@/svg/react-logo.svg",
+  "TypeScript": "@/svg/TS-Logo.svg",
+  "Figma": "@/svg/figma-logo.svg",
+  "Next.js": "@/svg/Vercel-Logo.svg",
+  "Ethereum": "@/svg/ethereum-logo.svg",
+  "Solidity": "@/svg/solidity-logo.svg",
+  "Ethers.js": "@/svg/ethersjs-logo.svg",
+  "RainbowKit": "@/svg/rainbowkit-logo.svg",
+  "AI/ML": "@/svg/openai-logo.svg"
+}
