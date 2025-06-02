@@ -2,71 +2,85 @@ import Image from 'next/image';
 
 export const logos = [
   {
-    src: "/images/svg/python.svg",
-    alt: 'Python Logo',
-    name: 'Python',
+      src: "/images/svg/WordPress.svg.png",
+      alt: "WordPress",
+      width: 500,
+      hight: 500
   },
   {
-    src: "/images/svg/tailwind.svg",
-    alt: 'Tailwind CSS Logo',
-    name: 'Tailwind CSS',
+      src: "/images/svg/csharp.svg",
+      alt: "C#",
+      name: "C#"
   },
   {
-    src: "/images/svg/react-logo.svg",
-    alt: 'React Logo',
-    name: 'React',
+      src: "/images/svg/mysql.svg.png",
+      alt: "MySQL",
+      name: "MySQL"
   },
   {
-    src: "/images/svg/TS-Logo.svg",
-    alt: 'TypeScript Logo',
-    name: 'TypeScript',
+      src: "/images/svg/postgresql.svg",
+      alt: "PostgreSQL",
+      name: "PostgreSQL"
   },
   {
-    src: "/images/svg/figma-logo.svg", 
-    alt: 'Figma Logo',
-    name: 'Figma',
+      src: "/images/svg/docker.png",
+      alt: "Docker",
+      name: "Docker",
+      width: 500,
+      hight: 500
   },
   {
-    src: "/images/svg/Vercel-Logo.svg",  
-    alt: 'Vercel Logo',
-    name: 'Next.js',
+      src: "/images/svg/github.svg",
+      alt: "Git/Github",
+      name: "Git/GitHub",
   },
   {
-    src: "/images/svg/ethereum-logo.svg", 
-    alt: 'Ethereum Logo',
-    name: 'Ethereum',
+      src: "/images/svg/rails.svg.png",
+      alt: "Ruby On Rails",
+      width: 500,
+      hight: 500,
   },
   {
-    src: "/images/svg/solidity-logo.svg",  
-    alt: 'Solidity Logo',
-    name: 'Solidity',
+      src: "/images/svg/ruby.svg",
+      alt: "Ruby Logo",
+      name: "Ruby",
   },
   {
-    src: "/images/svg/ethersjs-logo.svg", 
-    alt: 'Ethers.js Logo',
-    name: 'Ethers.js',
+      src: "/images/svg/tailwind.svg",
+      alt: "Tailwind CSS",
+      name: "Tailwind CSS",
   },
   {
-    src: "/images/svg/rainbowkit-logo.svg",  
-    alt: 'RainbowKit Logo',
-    name: 'RainbowKit',
+      src: "/images/svg/react.svg",
+      alt: "React",
+      name: "React",
   },
   {
-    src: "/images/svg/openai-logo.svg",  
-    alt: 'OpenAI Logo',
-    name: 'AI/ML',
+      src: "/images/svg/typescript.svg",
+      alt: "TypeScript",
+      name: "TypeScript",
+  },
+  {
+      src: "/images/svg/next-js.svg",  
+      alt: "Next.js",
+      name: "Next.js",
+  },
+  {
+      src: "/images/svg/openai.svg",  
+      alt: "OpenAI Logo",
+      name: "AI",
   },
 ];
 
 interface LogoProps {
    name: string;
-   src: string | string[];
-   alt: string | string[];
-   width?: number | number[];
-   height?: number | number[];
+   src: string;
+   alt: string;
+   width?: number;
+   height?: number;
 }
 
-const Logo = ({ src, alt, name, width = 30, height = 30 }: LogoProps) => (
+const Logo = ({ src, alt, name, width = 40, height = 40 }: LogoProps) => (
    <div className={"flex items-center gap-2 self-center lg:items-center lg:gap-2"}>
       {Array.isArray(src) ?
          <div className="flex items-center gap-2">
@@ -75,34 +89,32 @@ const Logo = ({ src, alt, name, width = 30, height = 30 }: LogoProps) => (
 
                <Image
                   src={src[0] || ""} 
-                  alt={Array.isArray(alt) ? alt[0] || "Image description" : alt || "Image description"}
-                  width={Array.isArray(width) ? width[0] : width}
-                  height={Array.isArray(height) ? height[0] : height}
+                  width={width | 50}
+                  height={height | 50}
+                  alt={alt || "Image description"}
                   className="scale-150 invert [&>path]:fill-white"
                />
             </div>
             
             <Image
-               src={src[1] || ""}
-               alt={Array.isArray(alt) ? alt[1] || "Image description" : alt || "Image description"}
-               width={Array.isArray(width) ? width[1] : width}
-               height={Array.isArray(height) ? height[1] : height}
+               src={src || ""}
+               alt={alt || "Image description"}
+               width={width}
+               height={height}
             />
          </div> : 
 
          <div className="flex w-[60px] items-center justify-center">
             <Image
                src={src || ""} 
-               alt={alt as string}
-               width={width as number}
-               height={height as number}
+               alt={alt}
+               width={width}
+               height={height}
             />
          </div>
       }
 
-      {name && 
-         <div className="text-sm font-semibold lg:text-base">{name}</div>
-      }
+      {name && <div className="text-sm font-semibold lg:text-base">{name}</div>}
    </div>
 );
 
@@ -132,7 +144,7 @@ export default function Technology() {
          >
             <div className="flex animate-marquee-scroll whitespace-nowrap py-6">
                {Array.from({ length: 2 }, (_, i) => (
-                  <LogoList key={`list-1-${i}`} startIndex={i} />
+                  <LogoList key={`list-${i}`} startIndex={i} />
                ))}
             </div>
 

@@ -1,12 +1,15 @@
-export interface IProjectCard {
+import { IconType } from "react-icons";
+
+interface ITech {
+   name: string;
+   icon: IconType;
+   color: string;
+}
+
+export type IProjectCard = {
+   id: number | string;
+   image: string;
    title: string;
    description: string;
-   date: string;
-   imageUrl: string;
-   tags: string[];
-   slug: string;
-   links: { 
-      title: string; 
-      url: string 
-   }[];
+   techs: ITech[];
 }

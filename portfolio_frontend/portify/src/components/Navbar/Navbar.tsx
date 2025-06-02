@@ -9,21 +9,21 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 
 const navItems = [
    { name: 'Projects', href: '#work' },
-   { name: 'Skills', href: '#skills' },
-   { name: 'Experience', href: '#experience' },
+   { name: 'My Skills', href: '#skills' },
+   { name: 'Works', href: '#works' },
    { name: 'Contact', href: '#contact' },
 ];
 
 const socialLinks = [
    {
+      icon: FaGithub,
       platform: "GitHub",
-      link: "https://github.com/mehrb98",
-      icon: FaGithub
+      link: "https://github.com/mehrb98"
    },
    {
+      icon: FaLinkedin,
       platform: "LinkedIn",
-      link: "https://www.linkedin.com/in/mehrulloh-boboev-a28b83185/",
-      icon: FaLinkedin
+      link: "https://www.linkedin.com/in/mehrulloh-boboev-a28b83185/"
    }
 ];
 
