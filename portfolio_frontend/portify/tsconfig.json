@@ -65,6 +65,7 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/types/*": ["./src/types/*"],
       "@/styles/*": ["./src/styles/*"],
+      "@/providers/*": ["./src/providers/*"],
       "@/components/*": ["./src/components/*"]
     },
 

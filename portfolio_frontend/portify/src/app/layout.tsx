@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { UIProvider } from "@/providers/UIProvider";
+import { UIProvider } from "../providers/UIProvider";
 
 export const metadata: Metadata = {
 	title: "Portify",
