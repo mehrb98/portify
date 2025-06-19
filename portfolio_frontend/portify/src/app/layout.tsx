@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { HeroUIProvider } from '@heroui/react'
+import { UIProvider } from "@/providers/UIProvider";
 
 export const metadata: Metadata = {
 	title: "Portify",
@@ -15,9 +15,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en">
 			<body className="min-h-screen bg-gray-900">
-				<HeroUIProvider>
+				<UIProvider>
 					{children}
-				</HeroUIProvider>
+				</UIProvider>
 			</body>
 		</html>
 	);
