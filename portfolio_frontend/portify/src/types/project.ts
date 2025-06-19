@@ -2,8 +2,8 @@ import { IconType } from "react-icons";
 
 interface ITech {
    name: string;
-   icon: IconType;
    color: string;
+   icon: IconType;
 }
 
 export type IProjectCard = {

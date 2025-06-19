@@ -110,9 +110,9 @@ export default function Technology() {
    return (
       <section id={"skills"} className={"py-20 h-full scroll-mt-20"}>
          <div className={"relative z-40 mx-auto flex flex-col gap-10 text-white lg:max-w-7xl"}>
-            <h1 className={"text-center !text-3xl"}>
+            <h2 className={"text-1xl mb-2 text-center font-bold text-white lg:text-3xl"}>
                Working with up-to-date technology
-            </h1>
+            </h2>
 
             <div
                className={"relative flex w-full overflow-hidden"}

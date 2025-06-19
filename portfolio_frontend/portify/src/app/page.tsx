@@ -1,7 +1,9 @@
-import Navbar from "../components/Navbar/Navbar";
 import Hero from '../components/Hero/Hero';
-// import Projects from "../components/Project/Projects";
+import Navbar from "../components/Navbar/Navbar";
+import { Footer } from "../components/Footer/Footer";
+import Projects from "../components/Project/Projects";
 import Technology from "../components/Technology/Technology";
+import SecondQuote from "../components/SecondQuote/SecondQuote";
 
 export default function Home() {
    return (
@@ -9,7 +11,9 @@ export default function Home() {
          <Navbar />
          <Hero />
          <Technology />
-         {/* <Projects/> */}
+         <SecondQuote/>
+         <Projects/>
+         <Footer/>
       </>
    )
 };

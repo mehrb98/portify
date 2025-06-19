@@ -4,9 +4,9 @@ import { SiD3Dotjs, SiFirebase, SiGraphql, SiNextdotjs, SiTailwindcss, SiTypescr
 export const projects = [
     {   
         id: 1,
-        image: "../../../public/images/svg/tailwind.svg",
+        image: "images/svg/tailwind.svg",
         title: "E-commerce Platform",
-        description: "Modern shopping experinece with Next.js and Typescript",
+        description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
         techs: [
             { name: "React", icon: FaReact, color: "#61DAFB" },
             { name: "Next.js", icon: SiNextdotjs, color: "000000" },
@@ -15,7 +15,7 @@ export const projects = [
     },
     {
         id: 2,
-        image: "../../../public/images/svg/tailwind.svg",
+        image: "images/svg/tailwind.svg",
         title: "Analytics Dashboard",
         description: "Real-time data visualization platform",
         techs: [
@@ -26,10 +26,10 @@ export const projects = [
     },
     {
         id: 3,
-        image: "../../../public/images/svg/tailwind.svg",
+        image: "images/svg/tailwind.svg",
         title: "Mobile Application",
         description: "Cross-platform mobile app for health tracking",
-        tech: [
+        techs: [
             { name: "React Native", icon: FaReact, color: "#61DAFB" },
             { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
             { name: "GraphQL", icon: SiGraphql, color: "#E535AB" }
