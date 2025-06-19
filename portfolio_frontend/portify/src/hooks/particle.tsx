@@ -56,7 +56,7 @@ const drawParticle = (ctx: CanvasRenderingContext2D, particle: Particle) => {
 };
 
 const drawConnections = (ctx: CanvasRenderingContext2D, particles: Particle[]) => {
-   ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+   ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
 
    for (let i = 0; i < particles.length; i++) {
       const a = particles[i];
@@ -87,7 +87,7 @@ export function ParticleCanvas() {
    const draw = useCallback((ctx: CanvasRenderingContext2D) => {
 
       if (particles.current.length === 0) {
-         particles.current = Array.from({ length: 50 }, 
+         particles.current = Array.from({ length: 100 }, 
          () => createParticle(ctx));
       }
 
@@ -112,7 +112,7 @@ export function ParticleCanvas() {
    return (
       <canvas 
          ref={canvasRef} 
-         className="absolute inset-0 w-full h-full pointer-events-none opacity-20"
+         className="absolute inset-0 w-full h-full pointer-events-none"
       />
    )
 }

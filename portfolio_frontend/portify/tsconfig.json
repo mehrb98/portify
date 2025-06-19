@@ -61,7 +61,7 @@
       "@/*": ["./src/*"],
       "@/public/*": ["./public/*"],
       "@/images/*": ["./public/images/*"],
-      "@/svg/*": ["./public/images/svg/*"],
+      "@/svg/*": ["./src/images/svg/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/types/*": ["./src/types/*"],
       "@/styles/*": ["./src/styles/*"],

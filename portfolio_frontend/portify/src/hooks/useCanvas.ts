@@ -42,7 +42,7 @@ export const useCanvas = (draw: DrawFunction) => {
          window.removeEventListener('resize', resizeCanvas);
          cancelAnimationFrame(animationFrameId);
       };
-      
+   
    }, [draw]);
 
    return canvasRef;

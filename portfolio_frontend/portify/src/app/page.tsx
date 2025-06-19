@@ -4,12 +4,12 @@ import Projects from "../components/Project/Projects";
 import Technology from "../components/Technology/Technology";
 
 export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <Technology />
-      <Projects/>
-    </>
-  )
+   return (
+      <>
+         <Navbar />
+         <Hero />
+         <Technology />
+         {/* <Projects/> */}
+      </>
+   )
 };

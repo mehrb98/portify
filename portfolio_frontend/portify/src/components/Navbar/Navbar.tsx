@@ -1,11 +1,13 @@
 "use client";
 
+import Link from 'next/link';
 import { useState } from 'react';
 import SocialLink from './SocialLink';
 import MenuItem from "../MenuItem/MenuItem";
-import { FaBurger, FaX } from 'react-icons/fa6';
+import { FaBars, FaX } from 'react-icons/fa6';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { Button } from '@heroui/react';
 
 const navItems = [
    { name: 'Projects', href: '#work' },
@@ -88,12 +90,16 @@ export default function Navbar() {
                </div>
 
                {/* Mobile Menu Button */}
-               <button onClick={toggleMenu} className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-primary/10 transition-colors">
+               <Button 
+                  isIconOnly
+                  onPress={toggleMenu}
+                  className="md:hidden rounded-lg bg-white/5 hover:bg-primary/10 transition-colors"
+               >
                   {uiState.isMenuOpen 
                      ? <FaX className="h-6 w-6 text-content/80" />
-                     : <FaBurger className="h-6 w-6 text-content/80" />
+                     : <FaBars className="h-6 w-6 text-content/80" />
                   }
-               </button>
+               </Button>
             </div>
 
             {/* Mobile Menu */}
@@ -103,29 +109,27 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   className="md:hidden mt-4 pb-4 space-y-4"
                >
+                  {navItems.map((item) => (
+                     <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={toggleMenu}
+                        className="block px-4 py-2 text-content/80 hover:text-primary hover:bg-white/5 
+                        rounded-lg transition-colors"
+                     >
+                        {item.name}
+                     </Link>
+                  ))}
 
-               {navItems.map((item) => (
-                  <a
-                     key={item.name}
-                     href={item.href}
-                     onClick={toggleMenu}
-                     className="block px-4 py-2 text-content/80 hover:text-primary hover:bg-white/5 
-                     rounded-lg transition-colors"
-                  >
-                     {item.name}
-                  </a>
-               ))}
-
-               <div className="pt-4 border-t border-white/5">
-                  {socialLinks.map((social, i) => 
-                     <SocialLink  
-                        key={"social-link-" + i} 
-                        link={social.link} 
-                        icon={social.icon} 
-                     />
-                  )}
-               </div>
-
+                  <div className="pt-4 border-t border-white/5 flex gap-2">
+                     {socialLinks.map((social, i) => 
+                        <SocialLink  
+                           key={"social-link-" + i} 
+                           link={social.link} 
+                           icon={social.icon} 
+                        />
+                     )}
+                  </div>
                </motion.div>
             )}
          </div>

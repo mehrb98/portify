@@ -13,10 +13,10 @@ export default function SocialLink({link, icon: Icon}: SocialLinkProps) {
       <div className="flex gap-3">
          <Button
             as={Link}
+            href={link}
             color={"primary"}
             variant={"solid"}
             target={"_blank"}
-            href={link}
             rel={"noopener noreferrer"}
             className={"p-2 rounded-lg bg-white/5 hover:bg-primary/10 transition-colors group"}
          >

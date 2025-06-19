@@ -1,67 +1,75 @@
 @config "../../tailwind.config.js";
 @import "tailwindcss";
 
+html {
+	scroll-behavior: smooth;
+}
+
 @keyframes marquee-scroll {
   0% {
-    transform: translateX(0);
+		transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+		transform: translateX(-50%);
   }
 }
 
 .animate-marquee-scroll {
-  animation: marquee-scroll 40s linear infinite;
+	animation: marquee-scroll 40s linear infinite;
 }
 
 .marquee-fast .animate-marquee-scroll {
-  animation-duration: 15s;
+	animation-duration: 15s;
 }
 
 .marquee-slow .animate-marquee-scroll {
-  animation-duration: 40s;
+	animation-duration: 40s;
 }
 
 @theme {
-  /* Colors */
-  --color-background: #0a0a0a;
-  --color-surface: #1a1a1a;
-  --color-primary: #0ea5e9;
-  --color-secondary: #8b5cf6;
-  --color-tertiary: #ec4899;
-  --color-content: #fafafa;
+	/* Colors */
 
-  /* Background gradients */
-  --background-gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%);
-  --background-gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f43f5e 100%);
-  --background-gradient-subtle: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, 
-    rgba(99, 102, 241, 0.15) 50%, rgba(139, 92, 246, 0.15) 100%);
+	--color-background: #0a0a0a;
+	--color-surface: #1a1a1a;
+	--color-primary: #0ea5e9;
+	--color-secondary: #8b5cf6;
+	--color-tertiary: #ec4899;
+	--color-content: #fafafa;
 
-  /* Animations */
-  --animate-fade-in: fadeIn 0.5s ease-out;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-gradient: gradient 8s ease infinite;
-  --animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-spin-slow: spin 3s linear infinite;
+	/** Background gradients **/
 
-  /* Keyframes */
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+	--background-gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%);
+	--background-gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f43f5e 100%);
+	--background-gradient-subtle: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, 
+	rgba(99, 102, 241, 0.15) 50%, rgba(139, 92, 246, 0.15) 100%);
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
+	/* Animations */
 
-  @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+	--animate-fade-in: fadeIn 0.5s ease-out;
+	--animate-float: float 6s ease-in-out infinite;
+	--animate-gradient: gradient 8s ease infinite;
+	--animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	--animate-spin-slow: spin 3s linear infinite;
 
-  @keyframes underline {
-    0% { transform: scaleX(0); }
-    100% { transform: scaleX(1); }
-  }
+  	/* Keyframes */
+
+	@keyframes fadeIn {
+		0% { opacity: 0; }
+		100% { opacity: 1; }
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-20px); }
+	}
+
+	@keyframes gradient {
+		0%, 100% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+	}
+
+	@keyframes underline {
+		0% { transform: scaleX(0); }
+		100% { transform: scaleX(1); }
+	}
 }

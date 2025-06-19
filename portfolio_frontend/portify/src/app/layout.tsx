@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { UIProvider } from "@/Providers/UIProvider";
+import { UIProvider } from "@/providers/UIProvider";
 
 export const metadata: Metadata = {
 	title: "Portify",
-	description: "Created with Next JS",
+	description: "Created by Mehrulloh Boboev",
 };
 
 interface RootLayoutProps {
@@ -14,11 +14,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en">
-				<body className="min-h-screen bg-gray-900">
-					<UIProvider>
-						{children}
-					</UIProvider>
-				</body>
+			<body className="min-h-screen bg-gray-900">
+				<UIProvider>
+					{children}
+				</UIProvider>
+			</body>
 		</html>
 	);
 }
