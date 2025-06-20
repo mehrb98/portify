@@ -7,7 +7,7 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
-   const { id } = await params
+   const { id } = params
    const project = projects.find(p => p.id.toString() === id);
 
    if (!project) return notFound();

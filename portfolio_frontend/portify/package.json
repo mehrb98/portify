@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=22.3.0"
   },
+  "type": "module", 
   "author": "Mehrb98 (https://github.com/mehrb98)",
   "scripts": {
     "dev": "next dev --turbopack",
