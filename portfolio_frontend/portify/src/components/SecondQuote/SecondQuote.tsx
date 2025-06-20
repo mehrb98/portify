@@ -12,7 +12,7 @@ const quote = {
 
 export default function SecondQuote() {
    return (
-      <div className="relative my-20 lg:my-40 flex flex-col items-center justify-center">
+      <section className="relative my-20 lg:my-40 flex flex-col items-center justify-center">
          <Image
             src={quoteBGBlur}
             alt="Quote BG Blur"
@@ -32,6 +32,6 @@ export default function SecondQuote() {
                - {quote.author}
             </p>
          </div>
-      </div>
+      </section>
    );
 }

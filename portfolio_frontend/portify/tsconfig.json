@@ -64,6 +64,7 @@
          "@/types/*": ["./src/types/*"],
          "@/styles/*": ["./src/styles/*"],
          "@/svg/*": ["./src/images/svg/*"],
+         "@/data/*": ["./src/data/*"],
          "@/images/*": ["./public/images/*"],
          "@/providers/*": ["./src/providers/*"],
          "@/components/*": ["./src/components/*"]

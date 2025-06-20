@@ -1,9 +1,9 @@
-import { IconType } from "react-icons";
+import { IconName } from "@/utils/utils";
 
-interface ITech {
+export interface ITech {
    name: string;
    color: string;
-   icon: IconType;
+   icon: IconName;
 }
 
 export type IProjectCard = {

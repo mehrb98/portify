@@ -1,17 +1,18 @@
 "use client";
 
-import { Card, CardBody, CardHeader, Chip, Image } from "@heroui/react"
-import { IProjectCard } from "../../types/project";
+import { TechChip } from "../TechChip";
+import { IProjectCard } from "@/types/project";
+import { Card, CardBody, CardHeader, Image } from "@heroui/react"
 
 export default function ProjectCard(props: IProjectCard) {
 	return (		
 		<Card className="group h-full bg-gray-900/50 border border-gray-800 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-gray-700">
-			<CardHeader className="p-0 relative h-60 w-full overflow-hidden bg-gray-800">
+			<CardHeader className="p-0 relative h-fit w-full overflow-hidden bg-gray-800">
 				<Image
 					radius="none"
 					alt={props.title}
 					src={props.image}
-					className="w-full h-48 object-cover"
+					className="object-cover"
 				/>
 			</CardHeader>
 
@@ -26,15 +27,12 @@ export default function ProjectCard(props: IProjectCard) {
 
 				<div className="flex flex-wrap gap-3 pt-2">
 					{props.techs.map((tech, i) => (
-						<Chip
+						<TechChip
 							key={i}
-							size="sm"
-							variant="flat"
-							startContent={<tech.icon color={tech.color} />}
-							className="bg-gray-700/80 text-gray-200 hover:bg-gray-600/80 transition-colors p-3"
-						>
-							{tech.name}
-						</Chip>
+							name={tech.name}
+							icon={tech.icon}
+							color={tech.color}
+						/>
 					))}
 				</div>
 			</CardBody>
