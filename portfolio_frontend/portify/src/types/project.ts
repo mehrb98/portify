@@ -6,10 +6,24 @@ export interface ITech {
    icon: IconName;
 }
 
-export type IProjectCard = {
-   id: number | string;
-   image: string;
+export interface IProjectLink {
+   url: string;
    title: string;
-   description: string;
-   techs: ITech[];
 }
+
+interface IProject {
+   title: string;
+   date: string;
+   techs: ITech[];
+   images_src: string;
+   description: string;
+   links: IProjectLink[];
+   full_description: string;
+}
+
+export interface IProjectCard extends IProject {
+   id: number;
+   image: string;
+}
+
+export type IProjectContent = Partial<IProject>;

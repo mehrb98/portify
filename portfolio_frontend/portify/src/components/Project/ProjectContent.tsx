@@ -2,24 +2,9 @@
 
 import { useState } from "react"
 import { TechChip } from "../TechChip"
-import { ITech } from "../../types/project"
+import { IProjectContent } from "@/types/project"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import { Image, Card, CardBody, Chip, Link, Skeleton } from "@heroui/react"
-
-interface IProjectLink {
-   url: string
-   title: string
-}
-
-interface IProjectContent {
-   title?: string
-   date?: string
-   techs?: ITech[];
-   images_src?: string
-   description?: string
-   links?: IProjectLink[]
-   full_description?: string
-}
 
 export function ProjectContent(props: IProjectContent) {
    const [isLoading, setIsLoading] = useState(true)
@@ -32,12 +17,8 @@ export function ProjectContent(props: IProjectContent) {
                   radius="lg"
                   shadow="lg"
                   alt={props.title}
-                  src={props.images_src || "/placeholder.svg"}
+                  src={props.images_src || ""}
                   className="w-full aspect-video object-cover"
-                  classNames={{
-                     wrapper: "w-full",
-                     img: "w-full h-full object-cover",
-                  }}
                   onLoad={() => setIsLoading(false)}
                />
             </Skeleton>

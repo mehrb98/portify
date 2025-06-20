@@ -1,4 +1,6 @@
-export const projects = [
+import { IProjectCard } from "../types/project";
+
+export const projects: IProjectCard[] = [
     {
         id: 1,
         image: "images/projects/1.png",
