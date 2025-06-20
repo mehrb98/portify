@@ -2,11 +2,14 @@ import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import { ProjectContent } from "@/components/Project/ProjectContent";
 
-type PageProps = {
-  params: { id: string; };
-};
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
 
-export default async function Page({ params }: PageProps) {
+
+export default async function Page({ params }: { params: { id: string } }) {
    const { id } = params
    const project = projects.find(p => p.id.toString() === id);
 
