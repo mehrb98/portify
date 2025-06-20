@@ -8,10 +8,9 @@ export async function generateStaticParams() {
   }));
 }
 
-
 export default async function Page({ params }: { params: { id: string } }) {
-   const { id } = params
-   const project = projects.find(p => p.id.toString() === id);
+   const { id } = await params;
+   const project = projects.find((p) => p.id === id);
 
    if (!project) return notFound();
 
