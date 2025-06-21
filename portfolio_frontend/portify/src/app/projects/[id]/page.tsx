@@ -4,13 +4,13 @@ import { ProjectContent } from "@/components/Project/ProjectContent";
 
 export async function generateStaticParams() {
    return projects.map((project) => ({ 
-      slug: project.slug 
+      id: project.id 
    }));
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-   const { slug } = await params;
-   const project = projects.find((p) => p.slug === slug);
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+   const { id } = await params;
+   const project = projects.find((p) => p.id === id);
 
    if (!project) return notFound();
 

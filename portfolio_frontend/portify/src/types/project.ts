@@ -22,7 +22,7 @@ interface IProject {
 }
 
 export interface IProjectCard extends IProject {
-   slug: string;
+   id: string;
    image: string;
 }
 

@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader, Image } from "@heroui/react"
 
 export default function ProjectCard(props: IProjectCard) {
 	return (
-		<Link href={`/projects/${props.slug}`}>
+		<Link href={"/projects/" + props.id}>
 			<Card className="group h-full bg-gray-900/50 border border-gray-800 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-gray-700">
 				<CardHeader className="p-0 relative h-fit w-full overflow-hidden bg-gray-800">
 					<Image
