@@ -2,7 +2,7 @@ import { IProjectCard } from "../types/project";
 
 export const projects: IProjectCard[] = [
     {
-        id: "1",
+        slug: "1",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
@@ -35,7 +35,7 @@ export const projects: IProjectCard[] = [
             '- 99.99% system uptime through robust infrastructure design',
     },
     {
-        id: "2",
+        slug: "2",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
@@ -68,7 +68,7 @@ export const projects: IProjectCard[] = [
             '- 99.99% system uptime through robust infrastructure design',
     },
     {
-        id: "3",
+        slug: "3",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
@@ -101,7 +101,7 @@ export const projects: IProjectCard[] = [
             '- 99.99% system uptime through robust infrastructure design',
     },
     {
-        id: "4",
+        slug: "4",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
@@ -134,7 +134,7 @@ export const projects: IProjectCard[] = [
             '- 99.99% system uptime through robust infrastructure design',
     },
     {
-        id: "5",
+        slug: "5",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
@@ -167,7 +167,7 @@ export const projects: IProjectCard[] = [
             '- 99.99% system uptime through robust infrastructure design',
     },
     {
-        id: "6",
+        slug: "6",
         image: "images/projects/1.png",
         title: "E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
