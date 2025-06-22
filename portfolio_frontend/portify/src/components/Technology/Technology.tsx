@@ -65,7 +65,7 @@ export const logos = [
    {
       src: "/images/svg/openai.svg",
       alt: "OpenAI Logo",
-      name: "AI",
+      name: "AI Integration",
    }
 ];
 

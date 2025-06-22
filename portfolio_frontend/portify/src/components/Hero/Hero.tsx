@@ -7,7 +7,7 @@ import { ParticleCanvas } from "@/hooks/particle";
 
 export default function Hero() {
    return (
-      <section className={"h-fit relative overflow-hidden bg-black"}>
+      <section className={"h-fit relative overflow-hidden bg-black"} id={"about-me"}>
          <ParticleCanvas />
 
          <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-32 pb-16">

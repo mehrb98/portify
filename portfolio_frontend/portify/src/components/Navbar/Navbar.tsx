@@ -3,17 +3,16 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import SocialLink from './SocialLink';
+import { motion } from 'framer-motion';
+import { Button } from '@heroui/react';
 import MenuItem from "../MenuItem/MenuItem";
 import { FaBars, FaX } from 'react-icons/fa6';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { Button } from '@heroui/react';
 
 const navItems = [
-   { name: 'Projects', href: '#work' },
-   { name: 'My Skills', href: '#skills' },
-   { name: 'Works', href: '#works' },
-   { name: 'Contact', href: '#contact' },
+   { name: 'About me', href: '#about-me' },
+   { name: 'Skills', href: '#skills' },
+   { name: 'Projects', href: '#projects' },
 ];
 
 const socialLinks = [
@@ -31,14 +30,7 @@ const socialLinks = [
 
 export default function Navbar() {
    const [uiState, setUiState] = useState({
-      isScrolled: false,
       isMenuOpen: false,
-   });
-
-   const { scrollY } = useScroll();
-
-   useMotionValueEvent(scrollY, 'change', (latest) => {
-      setUiState((prev) => ({ ...prev, isScrolled: latest > 50 }));
    });
 
   const toggleMenu = () => setUiState((prev) => 
@@ -46,27 +38,26 @@ export default function Navbar() {
 
    return (
       <motion.nav initial={{ y: -100 }} animate={{ y: 0 }} 
-         className={`fixed w-full z-50 ${uiState.isScrolled 
-         ? "backdrop-blur-2xl bg-background/90 shadow-2xl shadow-primary/10"
-         : 'backdrop-blur-lg bg-background/50'} transition-all duration-300 ease-out`}
+         className={"fixed w-full z-50 backdrop-blur-lg bg-background/50 transition-all duration-300 ease-out"}
       >
          <div className="max-w-7xl mx-auto px-6 py-3">
             <div className="flex items-center justify-between">
+               <motion.div whileHover={{ scale: 1.05 }}>
+                  <Link href={"/"} className="flex items-center gap-2 group">
+                     <div className="relative h-8 w-8 rounded-full overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary to-tertiary animate-spin-slow [mask-image:linear-gradient(transparent,white)]" />
 
-               <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2 group">
-                  <div className="relative h-8 w-8 rounded-full overflow-hidden">
-                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-tertiary animate-spin-slow [mask-image:linear-gradient(transparent,white)]" />
-
-                     <div className="absolute inset-[2px] bg-background rounded-full flex items-center justify-center">
-                        <span className="font-bold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent">
-                           MB
-                        </span>
+                        <div className="absolute inset-[2px] bg-background rounded-full flex items-center justify-center">
+                           <span className="font-bold bg-gradient-to-r from-primary to-tertiary bg-clip-text text-transparent">
+                              MB
+                           </span>
+                        </div>
                      </div>
-                  </div>
 
-                  <span className="font-semibold text-content/90 group-hover:text-primary transition-colors">
-                     Mehrulloh Boboev
-                  </span>
+                     <span className="font-semibold text-content/90 group-hover:text-primary transition-colors">
+                        Mehrulloh Boboev
+                     </span>
+                  </Link>
                </motion.div>
             
                <div className="hidden md:flex items-center gap-6">
@@ -78,7 +69,7 @@ export default function Navbar() {
                      )}
                   </div>
 
-                  <div className="h-6 w-px bg-white/10 mx-2" />
+                  <div className="h-6 w-px bg-white/10 mx-2"></div>
 
                   {socialLinks.map((social, i) => 
                      <SocialLink  

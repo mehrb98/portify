@@ -4,18 +4,19 @@ export const projects: IProjectCard[] = [
     {
         id: "1",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "Portfolio",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
-        date: 'December 2023',
+        date: "Mai 2025",
         images_src: "images/projects/1.png",
         techs: [
             { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
             { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
             { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Typescript", icon: "SiTypescript" as const, color: "#06B6D4" },
         ],
         links: [
-            { title: 'Live Demo', url: 'https://trading-bot.demo' },
-            { title: 'GitHub', url: 'https://github.com/username/trading-bot' },
+            { title: "Live Demo", url: "https://portify-mb.vercel.app" },
+            { title: "GitHub", url: "https://github.com/mehrb98/portify/tree/main/portfolio_frontend/portify" },
         ],
 
         full_description:
@@ -37,18 +38,21 @@ export const projects: IProjectCard[] = [
     {
         id: "2",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "Roomify",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
-        date: 'December 2023',
+        date: 'April 2025',
         images_src: "images/projects/1.png",
         techs: [
             { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
             { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
             { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Typescript", icon: "SiTypescript" as const, color: "#06B6D4" },
+            { name: "Google Cloud", icon: "SiGooglecloud" as const, color: "#4285F4" },
+            { name: "JWT", icon: "SiJsonwebtokens" as const, color: "#A91E50" },
         ],
         links: [
-            { title: 'Live Demo', url: 'https://trading-bot.demo' },
-            { title: 'GitHub', url: 'https://github.com/username/trading-bot' },
+            { title: "Live Demo", url: 'https://trading-bot.demo' },
+            { title: "GitHub", url: 'https://github.com/username/trading-bot' },
         ],
 
         full_description:
@@ -70,14 +74,20 @@ export const projects: IProjectCard[] = [
     {
         id: "3",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "VfB Stuttgart - E-commerce Platform",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
-        date: 'December 2023',
+        date: "October 2024 - April 2025",
         images_src: "images/projects/1.png",
         techs: [
             { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
-            { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
-            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Next.js", icon: "SiNextdotjs" as const, color: "#000000" },
+            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "#06B6D4" },
+            { name: "Typescript", icon: "SiTypescript" as const, color: "#06B6D4" },
+            { name: "Storybook", icon: "SiStorybook" as const, color: "#FF4785" }, 
+            { name: "PimCore", icon: "SiPimcore" as const, color: "#06B6D4" },
+            { name: "PHP", icon: "SiPhp" as const, color: "#777BB4" },      
+            { name: "Mysql", icon: "SiMysql" as const, color: "#FFFFF" },      
+            { name: "Docker", icon: "FaDocker" as const, color: "#06B6D4" },             
         ],
         links: [
             { title: 'Live Demo', url: 'https://trading-bot.demo' },
@@ -103,7 +113,7 @@ export const projects: IProjectCard[] = [
     {
         id: "4",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "Topmotive - FileUploader",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
         date: 'December 2023',
         images_src: "images/projects/1.png",
@@ -111,6 +121,8 @@ export const projects: IProjectCard[] = [
             { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
             { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
             { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Typescript", icon: "SiTypescript" as const, color: "#06B6D4" },
+            { name: "Javascript", icon: "SiJavascript" as const, color: "#F7DF1E" },
         ],
         links: [
             { title: 'Live Demo', url: 'https://trading-bot.demo' },
@@ -136,17 +148,21 @@ export const projects: IProjectCard[] = [
     {
         id: "5",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "Chat Application",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
-        date: 'December 2023',
+        date: "August 2024 - October 2024",
         images_src: "images/projects/1.png",
         techs: [
             { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
-            { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
-            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Next.js", icon: "SiNextdotjs" as const, color: "#000000" },
+            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "#06B6D4" },
+            { name: "Typescript", icon: "SiTypescript" as const, color: "#06B6D4" },
+            { name: "Ruby on Rails", icon: "SiRubyonrails" as const, color: "#CC0000" },
+            { name: "JWT", icon: "SiJsonwebtokens" as const, color: "#A91E50" },
+            { name: "Ruby", icon: "SiRuby" as const, color: "#CC0000" },
+            { name: "Postgresql", icon: "SiPostgresql" as const, color: "#FFFFF" },
         ],
         links: [
-            { title: 'Live Demo', url: 'https://trading-bot.demo' },
             { title: 'GitHub', url: 'https://github.com/username/trading-bot' },
         ],
 
@@ -169,14 +185,16 @@ export const projects: IProjectCard[] = [
     {
         id: "6",
         image: "images/projects/1.png",
-        title: "E-commerce Platform",
+        title: "Yooneed",
         description: "Developed a sophisticated trading bot using machine learning algorithms to analyze market patterns and execute automated trades with risk management strategies.",
         date: 'December 2023',
         images_src: "images/projects/1.png",
         techs: [
-            { name: "React", icon: "FaReact" as const, color: "#61DAFB" },
-            { name: "Next.js", icon: "SiNextdotjs" as const, color: "000000" },
-            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "06B6D4" },
+            { name: "Ruby", icon: "SiRuby" as const, color: "#CC0000" },
+            { name: "Ruby on Rails", icon: "SiRubyonrails" as const, color: "#CC0000" },
+            { name: "Tailwind", icon: "SiTailwindcss" as const, color: "#06B6D4" },
+            { name: "JWT", icon: "SiJsonwebtokens" as const, color: "#A91E50" },
+            { name: "Postgresql", icon: "SiPostgresql" as const, color: "#FFFFF" },
         ],
         links: [
             { title: 'Live Demo', url: 'https://trading-bot.demo' },
