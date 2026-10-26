@@ -42,6 +42,14 @@ All of them are server-only; nothing secret reaches the browser.
 - `src/lib/better-auth.ts`, `src/app/api/auth/[...all]/route.ts`: Better Auth setup
 - `src/proxy.ts`: sends visitors of `/admin` without a session cookie to the login page (every admin page and action validates the session with `requireAdmin()`)
 
+## Deploy with Dokploy
+
+1. Create a PostgreSQL 16 database in Dokploy (name and user `portfolio`).
+2. Create an Application from the GitHub repo, set Build Type to **Dockerfile**, and add the env vars from the table above (`DATABASE_URL` uses the database's internal host).
+3. Add your domain under Domains with container port **3000** and HTTPS on.
+4. Deploy. The container applies migrations on every start.
+5. Once, in the application's terminal: `npm run db:seed` (loads the CV content; running it again replaces all content) and `npm run create-admin -- "a long password"`.
+
 ## Before going live
 
 - Fill in the placeholders listed on the admin Overview (company cities, Fachrichtung, final project, Dart/Flutter period).
