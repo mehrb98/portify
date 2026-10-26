@@ -1,12 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE, readSessionToken } from "@/lib/session";
+import { getSessionCookie } from "better-auth/cookies";
 
-// Optimistic check: send signed-out visitors to the login page. Pages and actions check again.
-export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  if (pathname === "/admin/login") return NextResponse.next();
-  const email = await readSessionToken(request.cookies.get(SESSION_COOKIE)?.value);
-  if (!email) return NextResponse.redirect(new URL("/admin/login", request.url));
+// Optimistic check: send visitors without a session cookie to the login page.
+// Every admin page and server action validates the session itself (requireAdmin).
+export function proxy(request: NextRequest) {
+  if (request.nextUrl.pathname === "/admin/login") return NextResponse.next();
+  if (!getSessionCookie(request)) return NextResponse.redirect(new URL("/admin/login", request.url));
   return NextResponse.next();
 }
 

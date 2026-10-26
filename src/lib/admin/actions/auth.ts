@@ -1,11 +1,10 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { APIError } from "better-auth/api";
 import { z } from "zod";
-import { requireAdmin } from "@/lib/auth";
-import { verifyPassword } from "@/lib/password";
-import { SESSION_COOKIE, createSessionToken, sessionCookieOptions } from "@/lib/session";
+import { auth } from "@/lib/better-auth";
 import { sleep } from "../form";
 
 export type LoginState = { error?: string; email?: string };
@@ -20,27 +19,26 @@ const GENERIC = "Email or password is incorrect.";
 export async function login(_prev: LoginState, formData: FormData): Promise<LoginState> {
   const parsed = schema.safeParse({ email: formData.get("email") ?? "", password: formData.get("password") ?? "" });
   const email = parsed.success ? parsed.data.email : "";
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const hash = process.env.ADMIN_PASSWORD_HASH;
-  if (!adminEmail || !hash) return { error: "Sign in is not configured on this server.", email };
+  const admin = process.env.ADMIN_EMAIL;
+  if (!admin) return { error: "Sign in is not configured on this server.", email };
 
-  // Always run the password check so a wrong email takes as long as a wrong password.
-  const passwordOk = parsed.success && parsed.data.password !== "" ? await verifyPassword(parsed.data.password, hash) : false;
-  const emailOk = email.toLowerCase() === adminEmail.toLowerCase();
-
-  if (!passwordOk || !emailOk) {
+  // Only the owner's account may sign in here, even if other users exist in the table.
+  if (!parsed.success || !parsed.data.password || email.toLowerCase() !== admin.toLowerCase()) {
     await sleep(600 + Math.floor(Math.random() * 400));
     return { error: GENERIC, email };
   }
 
-  const jar = await cookies();
-  jar.set(SESSION_COOKIE, await createSessionToken(adminEmail), sessionCookieOptions);
+  try {
+    await auth.api.signInEmail({ body: { email, password: parsed.data.password }, headers: await headers() });
+  } catch (e) {
+    await sleep(600 + Math.floor(Math.random() * 400));
+    if (e instanceof APIError && e.status === "TOO_MANY_REQUESTS") return { error: "Too many attempts. Try again in a minute.", email };
+    return { error: GENERIC, email };
+  }
   redirect("/admin");
 }
 
 export async function logout() {
-  await requireAdmin();
-  const jar = await cookies();
-  jar.delete(SESSION_COOKIE);
+  await auth.api.signOut({ headers: await headers() });
   redirect("/admin/login");
 }

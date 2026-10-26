@@ -11,10 +11,11 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "hash-password": "tsx scripts/hash-password.ts"
+    "create-admin": "tsx --env-file-if-exists=.env scripts/create-admin.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "better-auth": "^1.7.13",
     "jose": "^6.2.13",
     "next": "16.3.6",
     "react": "19.2.8",

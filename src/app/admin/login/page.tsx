@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/admin/login-form";
-import { SESSION_COOKIE, readSessionToken } from "@/lib/session";
+import { getAdminEmail } from "@/lib/auth";
 
 export const metadata: Metadata = { title: "Sign in" };
 
 export default async function LoginPage() {
-  const jar = await cookies();
-  if (await readSessionToken(jar.get(SESSION_COOKIE)?.value)) redirect("/admin");
+  if (await getAdminEmail()) redirect("/admin");
   return (
     <main className="flex min-h-dvh items-center justify-center bg-paper px-4 py-12 text-ink">
       <div className="flex w-full max-w-[400px] flex-col gap-6 rounded-[14px] border border-rule bg-surface p-8">
