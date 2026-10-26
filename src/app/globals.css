@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Design tokens from the style tile. Light is the default; .dark on <html> switches. */
+:root {
+  --paper: #f6f6f3;
+  --surface: #ffffff;
+  --ink: #111317;
+  --ink-2: #43474f;
+  --ink-3: #61666f;
+  --rule: #e2e2dc;
+  --rule-2: #ecece7;
+  --chip: #f1f1ec;
+  --signal: #1d4ed8;
+  --signal-ink: #1e3a8a;
+  --soft: #e9eefb;
+  --ok: #15803d;
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --bar-old: #d9dbe0;
+  --code-bg: #111317;
+  --code-ink: #ededea;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #0b0c0e;
+  --surface: #131519;
+  --ink: #ededea;
+  --ink-2: #b6bac1;
+  --ink-3: #8d929b;
+  --rule: #262930;
+  --rule-2: #1e2127;
+  --chip: #1c1f24;
+  --signal: #8aa8ff;
+  --signal-ink: #b4c6ff;
+  --soft: #172142;
+  --ok: #4ade80;
+  --warn: #f59e0b;
+  --danger: #f87171;
+  --bar-old: #2f333b;
+  --code-bg: #050607;
+  --code-ink: #ededea;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-2: var(--rule-2);
+  --color-chip: var(--chip);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-soft: var(--soft);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-bar-old: var(--bar-old);
+  --color-code-bg: var(--code-bg);
+  --color-code-ink: var(--code-ink);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button {
+  transition: color 180ms, background-color 180ms, border-color 180ms;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* Fade and 8px rise when a section enters the viewport (see components/reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Timeline bars grow from the left once. */
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.bar-grow {
+  transform-origin: left;
+  animation: grow 700ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .bar-grow {
+    animation: none;
+  }
+  a,
+  button {
+    transition: none;
+  }
+}
