@@ -1,0 +1,236 @@
+// Content for the portfolio site. The public page reads it, the admin dashboard edits it.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  PUBLISHED
+  DRAFT
+  HIDDEN
+}
+
+enum ProjectKind {
+  WORK
+  SIDE
+}
+
+enum EducationKind {
+  AUSBILDUNG
+  DEGREE
+}
+
+enum CertificateKind {
+  RECOGNITION
+  COURSE
+}
+
+/// Single row (id = 1) holding the hero, about text, links and section visibility.
+model Profile {
+  id          Int      @id @default(1)
+  name        String
+  headline    String
+  status      String // badge next to the portrait
+  location    String
+  pitch       String
+  email       String
+  github      String
+  linkedin    String
+  cvUrl       String
+  photoUrl    String
+  /// [{ k, v }] rows of the at-a-glance card
+  facts       Json
+  coreStack   String[]
+  /// [{ n, l }] key facts under the hero
+  metrics     Json
+  aboutTitle  String
+  about       String[]
+  /// [{ t, d }] "What I bring"
+  strengths   Json
+  /// { about: true, stack: true, ... }
+  sections    Json
+  updatedAt   DateTime @updatedAt
+}
+
+model Company {
+  id        String    @id @default(cuid())
+  name      String
+  shortName String
+  city      String?
+  order     Int       @default(0)
+  jobs      Job[]
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Job {
+  id           String           @id @default(cuid())
+  company      Company          @relation(fields: [companyId], references: [id], onDelete: Restrict)
+  companyId    String
+  role         String
+  /// YYYY-MM
+  start        String
+  /// YYYY-MM, null while it is the current job
+  end          String?
+  bullets      String[]
+  order        Int              @default(0)
+  technologies JobTechnology[]
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+}
+
+model Technology {
+  id             String          @id @default(cuid())
+  name           String          @unique
+  /// timeline group: Languages, Frontend, Backend, Data, Integrations and AI, Mobile
+  category       String
+  /// toolkit column for technologies without a dated role: Core, AI, Frontend, Also familiar
+  toolkitGroup   String?
+  showOnTimeline Boolean         @default(true)
+  order          Int             @default(0)
+  jobs           JobTechnology[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model JobTechnology {
+  job          Job        @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  jobId        String
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+  technologyId String
+
+  @@id([jobId, technologyId])
+}
+
+model Project {
+  id        String      @id @default(cuid())
+  name      String
+  kind      ProjectKind @default(WORK)
+  company   Company?    @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  companyId String?
+  /// free text, e.g. "2025 to now"
+  period    String
+  /// e.g. "Designed and built", "Built end to end"
+  role      String?
+  summary   String
+  /// technical focus line, mid-size cards
+  focus     String?
+  /// featured case study: [{ k, v }]
+  details   Json?
+  /// side projects: data flow shown in the dark box
+  flow      String?
+  tags      String[]
+  url       String?
+  featured  Boolean     @default(false)
+  /// main = large cards, compact = small cards, more = "More on GitHub" list
+  size      String      @default("compact")
+  status    Status      @default(PUBLISHED)
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Education {
+  id        String        @id @default(cuid())
+  kind      EducationKind
+  title     String
+  school    String
+  location  String
+  startYear Int
+  endYear   Int?
+  state     String        @default("Completed")
+  /// [{ k, v }] extra rows, a value in [brackets] is a placeholder
+  details   Json
+  order     Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Certificate {
+  id        String          @id @default(cuid())
+  kind      CertificateKind
+  title     String
+  /// date (07/2026) or issuer (Udemy)
+  meta      String
+  order     Int             @default(0)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+/// Career journey milestones in the education section.
+model Milestone {
+  id     String @id @default(cuid())
+  phase  String // Ausbildung, Professional developer, Full-stack engineer
+  label  String // 2022, 09/2022, 2024–25
+  text   String
+  order  Int    @default(0)
+}
+
+// ---- Better Auth (admin sign-in). Shapes follow Better Auth's core schema. ----
+
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
