@@ -222,8 +222,6 @@ async function main() {
     data: {
       kind: "AUSBILDUNG", title: "Software Developer", school: "IT School Stuttgart", location: "Stuttgart, Germany", startYear: 2022, endYear: 2025, order: 0,
       details: [
-        { k: "Fachrichtung", v: "[Fachrichtung, e.g. Anwendungsentwicklung]" },
-        { k: "Final project", v: "[IHK Abschlussprojekt, if applicable]" },
         { k: "In parallel", v: "Full-stack roles at Quimron and Orcaya" },
       ],
     },

@@ -25,6 +25,8 @@ const BARS = ["bg-bar-old", "bg-[#8aa8ff] dark:bg-[#4a63b8]", "bg-signal"];
 
 export function Education({ education, certificates, milestones, hasCurrentJob }: Props) {
   const ausbildung = education.find((e) => e.kind === "AUSBILDUNG");
+  // Rows still holding a [placeholder] stay off the public page until they are filled in.
+  const details = ausbildung?.details.filter((d) => !isPlaceholder(d.v)) ?? [];
   const degrees = education.filter((e) => e.kind === "DEGREE");
 
   const phaseNames = [...new Set(milestones.map((m) => m.phase))];
@@ -84,15 +86,15 @@ export function Education({ education, certificates, milestones, hasCurrentJob }
               <span className="mt-1 text-base text-ink-2">
                 {ausbildung.school}, {ausbildung.location}
               </span>
-              {ausbildung.details.length > 0 && (
+              {details.length > 0 && (
                 <dl className="mt-6 flex flex-col">
-                  {ausbildung.details.map((d, i) => (
+                  {details.map((d, i) => (
                     <div
                       key={i}
                       className="flex flex-col gap-1 border-t border-rule py-3 sm:grid sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-4"
                     >
                       <dt className="font-mono text-xs leading-[22px] text-ink-3">{d.k}</dt>
-                      <dd className={`text-[15px] leading-[22px] ${isPlaceholder(d.v) ? "text-warn" : ""}`}>{d.v}</dd>
+                      <dd className="text-[15px] leading-[22px]">{d.v}</dd>
                     </div>
                   ))}
                 </dl>

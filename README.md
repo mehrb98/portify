@@ -52,7 +52,7 @@ All of them are server-only; nothing secret reaches the browser.
 
 ## Before going live
 
-- Fill in the placeholders listed on the admin Overview (company cities, Fachrichtung, final project, Dart/Flutter period).
+- Fill in the placeholders listed on the admin Overview (company cities, Dart/Flutter period).
 - CV download: the CV PDF includes a phone number, so it is not shipped. Put a version you are happy to publish in `public/cv/` (or host it elsewhere) and set its URL in Admin → Settings. The CV buttons stay hidden until then.
 - Impressum and Datenschutz contain placeholders for your address and legal text.
 - Set `SITE_URL`, `BETTER_AUTH_URL` and `BETTER_AUTH_SECRET` on the host, then run `npm run create-admin` once with a strong password.
